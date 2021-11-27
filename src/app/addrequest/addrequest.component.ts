@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Request } from '../shared/request';
 import { RequestService } from '../shared/request.service';
@@ -23,12 +24,12 @@ export class AddrequestComponent implements OnInit {
     //Populate the form while updating
     if (this.requestId != 0 || this.requestId != null) {
       //Get User
-      this.requestService.getUser(this.userId).subscribe(
+      this.requestService.getRequest(this.requestId).subscribe(
 
         data => {
           console.log(data);
 
-          this.userService.formData = Object.assign({}, data);
+          this.requestService.formData = Object.assign({}, data);
         },
         error => console.log(error)
 
@@ -37,19 +38,18 @@ export class AddrequestComponent implements OnInit {
   }
   onSubmit(form: NgForm) {
     console.log(form.value);
-    let addId = this.userService.formData.UserId;
+    let addId = this.requestService.formData.RequestId;
     //INSERT
     if (addId == 0 || addId == null) {
-      this.insertUserRecord(form);
-      this.router.navigate(['/hobby', this.userService.formData.UserId])
+
+      console.log("Inserting record")
+      this.insertRequestRecord(form);
     }
     else {
       //UPDATE
       console.log("Updating record")
-      this.updateUserRecord(form);
+      this.updateRequestRecord(form);
     }
-
-    //form.resetForm();
   }
 
   //Clear all contents at loading
@@ -60,17 +60,14 @@ export class AddrequestComponent implements OnInit {
   }
 
   //INSERT
-  insertUserRecord(form: NgForm) {
+  insertRequestRecord(form: NgForm) {
     console.log("Inserting a record...."); // For testing
 
-    this.userService.addUser(form.value).subscribe(
+    this.requestService.addRequest(form.value).subscribe(
 
       (result) => {
         console.log(result);
-        this.toasterService.success('User Record Added successfully', 'Dating App');
         this.resetForm(form);
-        this.router.navigate(['/hobby', this.userService.formData.UserId])
-
       }
     );
     //window.location.reload();
@@ -78,16 +75,13 @@ export class AddrequestComponent implements OnInit {
 
 
   //UPDATE
-  updateUserRecord(form: NgForm) {
+  updateRequestRecord(form: NgForm) {
     console.log("Updating a record...."); // For testing
-    this.userService.updateUser(form.value).subscribe(
+    this.requestService.updateRequest(form.value).subscribe(
 
       (result) => {
         console.log(result);
         this.resetForm(form);
-        this.toasterService.success('User Record updated successfully', 'Dating App');
-        this.userService.bindListUsers();
-        this.router.navigate(['hobby', this.userService.formData.UserId])
 
       }
     );
