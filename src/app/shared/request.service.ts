@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Request } from '../shared/request';
 import { Requestmodel } from './requestmodel';
@@ -28,11 +29,8 @@ export class RequestService {
   }
 
   //Get Request
-  getRequest(id) {
-    this.httpClient.get(environment.apiUrl + "/api/getreq")
-      .toPromise().then(
-        Response => this.request = Response as Request
-      )
+  getRequest(id): Observable<any> {
+    return this.httpClient.get(environment.apiUrl + "/api/getreq/" + id);
   }
 
   //Add request

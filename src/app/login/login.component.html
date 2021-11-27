@@ -9,8 +9,8 @@
 
             <!--UserName-->
             <div>
-                <input type="text" placeholder="Enter user name" formControlName="UserName" 
-                autocomplete="off" required class="form-control">
+                <input type="text" placeholder="Enter user name" formControlName="UserName" autocomplete="off" required
+                    class="form-control">
             </div>
             <div *ngIf="isSubmitted && formControls.UserName.errors">
                 <div *ngIf="formControls.UserName.errors.required" style="color: red; text-align: left;">
@@ -32,14 +32,14 @@
             </div>
             <br>
             <div>
-            <!--Button-->
-            <button class="btn btn-md btn-outline-primary" (click)="loginCredentials()">
-                <i class="fa fa-sign-in"></i>Login
-            </button>
-            &nbsp;
-            <button class="btn btn-md btn-outline-primary" (click)="loginVerifyTest()">
-                <i class="fa fa-sign-in" ></i>Test
-            </button>
+                <!--Button-->
+                <button class="btn btn-md btn-outline-primary" (click)="loginCredentials()">
+                    <i class="fa fa-sign-in"></i>Login
+                </button>
+                &nbsp;
+                <button class="btn btn-md btn-outline-primary" (click)="loginVerifyTest()">
+                    <i class="fa fa-sign-in"></i>Test
+                </button>
             </div>
 
 
@@ -51,4 +51,4 @@
 
     </div>
 
-</div>  
+</div>

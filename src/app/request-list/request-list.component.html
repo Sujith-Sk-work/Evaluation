@@ -1,4 +1,4 @@
-<div class="container">  
+<div class="container">
     <div class="header">
         <h5>Submitted Requests</h5>
         <!--Search-->
@@ -26,26 +26,24 @@
             </tr>
         </thead>
         <tbody>
-            <tr
-                *ngFor="let r of requestService.requests |filter:filter | paginate:{itemsPerPage:5,currentPage:page }">
-                <td >{{r.RequestId}}</td>
-                <td >{{r.CauseTravel}}</td>
-                <td >{{r.Source}}</td>
-                <td >{{r.Destination}}</td>
-                <td >{{r.Mode}}</td>
-                <td >{{r.FromDate | date:'dd-MM-yyyy'}}</td>
-                <td >{{r.ToDate | date:'dd-MM-yyyy'}}</td>
-                <td >{{r.NoOfDays}}</td>
-                <td >{{r.Priority}}</td>
-                <td >{{r.ProjectName}}</td>
-                <td >{{r.FirstName}}</td>
-                <td >{{r.Status}}</td>
+            <tr *ngFor="let r of requestService.requests |filter:filter | paginate:{itemsPerPage:5,currentPage:page }">
+                <td>{{r.RequestId}}</td>
+                <td>{{r.CauseTravel}}</td>
+                <td>{{r.Source}}</td>
+                <td>{{r.Destination}}</td>
+                <td>{{r.Mode}}</td>
+                <td>{{r.FromDate | date:'dd-MM-yyyy'}}</td>
+                <td>{{r.ToDate | date:'dd-MM-yyyy'}}</td>
+                <td>{{r.NoOfDays}}</td>
+                <td>{{r.Priority}}</td>
+                <td>{{r.ProjectName}}</td>
+                <td>{{r.FirstName}}</td>
+                <td>{{r.Status}}</td>
             </tr>
         </tbody>
     </table>
     <div class="footer">
         <!--Pagination-->
-        <pagination-controls (pageChange)="page=($event)"></pagination-controls> 
+        <pagination-controls (pageChange)="page=($event)"></pagination-controls>
     </div>
 </div>
-
