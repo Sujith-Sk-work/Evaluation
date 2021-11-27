@@ -1,0 +1,36 @@
+<header>
+    <div class="container">
+        <h5>Welcome : {{loggedUserName}}</h5>
+
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-sm">
+            <a routerLink='/requestlist' role="button" class="btn btn-outline-primary btn-lg btn-block text-center">
+                <span><i class="fa fa-user-plus fa-2x" style="color: black;"></i> </span>
+                <br>
+                <p>View All Requests</p>
+
+            </a>
+        </div>
+        <div class="col-sm">
+            <a routerLink='/addrequest' role="button" class="btn btn-outline-primary btn-lg btn-block text-center">
+                <span><i class="fa fa-users fa-2x" style="color: black;"></i> </span>
+                <br>
+                <p>Make Travel Requests</p>
+
+            </a>
+
+        </div>
+        <div class="col-sm">
+            <a (click)="logOut()" role="button" class="btn btn-outline-primary btn-lg btn-block text-center">
+                <span><i class="fa fa-share-square fa-2x" style="color: black;"></i> </span>
+                <br>
+                <p>Logout</p>
+
+            </a>
+
+        </div>
+    </div>
+</header>
+

@@ -1,0 +1,65 @@
+<form name="userform" #form="ngForm" autocomplete="off" 
+(ngSubmit)="onSubmit(form)">
+    <!--User Id-->
+    <input type="text" name="UserId" [(ngModel)]="userService.formData.UserId" />
+    <!--Employee Name-->
+    <div class="form-group">
+        <label>Full Name:</label>
+        <input type="text" name="Name" #Name="ngModel" [(ngModel)]="userService.formData.Name"
+            class="form-control" placeholder="Enter Full Name" minlength="5" maxlength="25" required
+            [ngClass]="{'is-invalid':Name.touched && Name.invalid}" />
+        <div class="validation-error" *ngIf="Name.touched && Name.invalid">
+            <div *ngIf="Name.errors.required"> Full Name is required
+            </div>
+        </div>
+    </div>
+    <!--Occupation-->
+
+    <div class="form-group">
+        <label>Occupation:</label>
+        <input type="text" name="Occupation" #Occupation="ngModel" [(ngModel)]="userService.formData.Occupation"
+            class="form-control" placeholder="Enter Occupation" minlength="2" maxlength="25" required
+            [ngClass]="{'is-invalid': Occupation.touched && Occupation.invalid}" />
+        <div class="validation-error" *ngIf="Occupation.touched && Occupation.invalid">
+            <div *ngIf="Occupation.errors.required"> Occupation is required
+
+            </div>
+        </div>
+    </div>
+    <!--Age-->
+    <div class="form-group">
+        <label>Age:</label>
+        <input type="number" name="Age" #Age="ngModel" [(ngModel)]="userService.formData.Age"
+            class="form-control" placeholder="Enter Age"  required
+            [ngClass]="{'is-invalid': Age.touched && Age.invalid}" />
+        <div class="validation-error" *ngIf="Age.touched && Age.invalid">
+            <div *ngIf="Age.errors.required"> Age is required
+
+            </div>
+        </div>
+    </div>
+    <!--Fav Food-->
+    <div class="form-group">
+        <label class="col-md-4">FavFood:</label>
+        <select name="FavFood" id="FavFood" class="form-control" #FavFood="ngModel" required
+            [(ngModel)]="userService.formData.FavFood">
+            <option value=0 disabled>Select FavFood</option>
+            <option *ngFor="let f of userService.food" value="{{f.FoodId}}">{{f.FoodName}}</option>
+                     
+        </select>
+        <div class="validation-error" *ngIf="FavFood.touched && FavFood.invalid">
+            <div *ngIf="FavFood.errors.required"> Favourite Food is required
+
+            </div>
+        </div>
+    </div>
+    <br>
+    <!--Submit Button-->
+    <div class="form-group">
+        <button type="submit" [disabled]="!(form.valid && form.dirty)"
+        class="btn btn-lg btn-primary form-control" >Submit</button>
+
+    </div>
+
+</form>
+
