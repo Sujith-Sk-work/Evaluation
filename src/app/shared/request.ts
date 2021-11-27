@@ -1,4 +1,4 @@
-export class Request {
+export class Request { 
     RequestId:number;
     CauseTravel:string;
     Source:String;
